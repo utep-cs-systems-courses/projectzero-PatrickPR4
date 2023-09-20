@@ -13,3 +13,31 @@ void print_char_11x16(char c)
     putchar('\n');
   }
 }
+
+void print_arrow_triangle(char c){
+  c -= 0x20;
+  int hexSeq[] = {0x000, 0x000, 0x060, 0x0F0, 0x1F8, 0x3FC, 0x7FE, 0xFFF};
+  for(int row = 0; row < 8; row++) {
+    unsigned short rowBits = hexSeq[row];
+    for(int i = 0; i < 12; i++) {
+      unsigned short colMask = 1 << (11-i);
+      putchar((rowBits & colMask) ? '*' : ' ');
+    }
+
+    putchar('\n');
+  } 
+}
+
+void print_arrow_square(char c){
+  c -= 0x20;
+  int hexSeq[] = {0x0F0, 0x0F0, 0x0F0, 0x0F0, 0x0F0, 0x000, 0x000, 0x000};
+  for(int row = 0; row < 8; row++) {
+    unsigned short rowBits = hexSeq[row];
+    for(int i = 0; i < 12; i++) {
+      unsigned short colMask = 1 << (11-i);
+      putchar((rowBits & colMask) ? '*' : ' ');
+    }
+
+    putchar('\n');
+  }
+}
